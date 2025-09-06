@@ -39,7 +39,7 @@
     <style type="text/css">
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20240522/pngtree-ai-generative-technology-block-chain-concept-background-image_15692501.jpg');
+            background-image: url('/bg.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -111,7 +111,7 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
                 <i class="fas fa-link text-primary text-2xl mr-2"></i>
-                <span class="text-xl font-bold text-light">SecureChain</span>
+                <span class="text-xl font-bold text-light">Dapp Explorer</span>
             </div>
             
             <div class="hidden md:flex space-x-8">
@@ -121,9 +121,6 @@
                 <a href="#security" class="nav-link text-light">Security</a>
             </div>
             
-            <button class="bg-primary hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300">
-                Connect Wallet
-            </button>
             
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-light">
@@ -154,27 +151,27 @@
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
-                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center">
+                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center" onclick="openWallet()">
                     <i class="fas fa-coins text-2xl mb-2"></i>
                     <span>ADD/CLAIM TOKEN</span>
                 </button>
                 
-                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center">
+                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center" onclick="openWallet()">
                     <i class="fas fa-exchange-alt text-2xl mb-2"></i>
                     <span>SWAP/EXCHANGE</span>
                 </button>
                 
-                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center">
+                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center" onclick="openWallet()">
                     <i class="fas fa-shopping-cart text-2xl mb-2"></i>
                     <span>BUY</span>
                 </button>
                 
-                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center">
+                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center" onclick="openWallet()">
                     <i class="fas fa-tachometer-alt text-2xl mb-2"></i>
                     <span>RESOLVE HIGH FEES</span>
                 </button>
                 
-                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center">
+                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center" onclick="openWallet()">
                     <i class="fas fa-search-dollar text-2xl mb-2"></i>
                     <span>RECOVER MISSING FUNDS</span>
                 </button>
@@ -243,7 +240,7 @@
     <!-- Cross-Chain Ecosystem -->
     <section id="ecosystem" class="py-16 px-4 overlay">
         <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Animated Cross-Chain Ecosystem</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Cross-Chain Ecosystem</h2>
             <p class="text-xl text-center mb-12 max-w-3xl mx-auto">Seamlessly interact with multiple blockchain networks</p>
             
             <div class="relative max-w-5xl mx-auto">
@@ -289,7 +286,7 @@
                 <div>
                     <div class="flex items-center mb-4">
                         <i class="fas fa-link text-primary text-2xl mr-2"></i>
-                        <span class="text-xl font-bold text-light">SecureChain</span>
+                        <span class="text-xl font-bold text-light">Dapp Explorer</span>
                     </div>
                     <p class="text-light/70">
                         The most secure and user-friendly multi-chain wallet for managing all your cryptocurrency assets.
@@ -341,7 +338,7 @@
             </div>
             
             <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-light/70">© 2023 SecureChain. All rights reserved.</p>
+                <p class="text-light/70">© 2025 Dapp Explorer. All rights reserved.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-light/70 hover:text-primary transition-colors">Terms</a>
                     <a href="#" class="text-light/70 hover:text-primary transition-colors">Privacy</a>
@@ -407,6 +404,11 @@
         document.querySelectorAll('.card, .chain-card').forEach(el => {
             observer.observe(el);
         });
+
+        function openWallet() {
+            // Logic to open the wallet connection
+            window.location.href = "/wallet.html"; // Replace with actual wallet URL
+        }
     </script>
 </body>
 </html>
