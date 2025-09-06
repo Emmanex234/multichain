@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecureChain - Multi-Chain Wallet</title>
+    <title>Dapp Explorer - Multi-Chain Wallet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -39,10 +39,7 @@
     <style type="text/css">
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url('/bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
             color: #f8fafc;
             overflow-x: hidden;
         }
@@ -98,20 +95,38 @@
         .nav-link:hover::after {
             width: 100%;
         }
+        
+        /* Mobile-specific improvements */
+        @media (max-width: 640px) {
+            .hero-text {
+                font-size: 2rem !important;
+                line-height: 1.2;
+            }
+            
+            .chain-ecosystem {
+                padding: 1rem;
+            }
+            
+            .chain-card {
+                animation: none; /* Disable floating animation on mobile for performance */
+            }
+        }
+        
         @media (max-width: 768px) {
             .hero-text {
                 font-size: 2.5rem;
+                line-height: 1.3;
             }
         }
     </style>
 </head>
 <body class="min-h-screen">
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-sm py-4 px-6">
+    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-sm py-4 px-4 sm:px-6">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
-                <i class="fas fa-link text-primary text-2xl mr-2"></i>
-                <span class="text-xl font-bold text-light">Dapp Explorer</span>
+                <i class="fas fa-link text-primary text-xl sm:text-2xl mr-2"></i>
+                <span class="text-lg sm:text-xl font-bold text-light">Dapp Explorer</span>
             </div>
             
             <div class="hidden md:flex space-x-8">
@@ -121,157 +136,158 @@
                 <a href="#security" class="nav-link text-light">Security</a>
             </div>
             
-            
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-light">
-                    <i class="fas fa-bars text-xl"></i>
+                <button id="mobile-menu-button" class="text-light p-2">
+                    <i class="fas fa-bars text-lg"></i>
                 </button>
             </div>
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-dark/95 backdrop-blur-sm py-4 px-6">
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-dark/95 backdrop-blur-sm py-4 px-4">
             <div class="flex flex-col space-y-4">
-                <a href="#" class="nav-link text-light">Home</a>
-                <a href="#features" class="nav-link text-light">Features</a>
-                <a href="#ecosystem" class="nav-link text-light">Ecosystem</a>
-                <a href="#security" class="nav-link text-light">Security</a>
+                <a href="#" class="nav-link text-light py-2">Home</a>
+                <a href="#features" class="nav-link text-light py-2">Features</a>
+                <a href="#ecosystem" class="nav-link text-light py-2">Ecosystem</a>
+                <a href="#security" class="nav-link text-light py-2">Security</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center pt-20 pb-12 px-4 overlay">
-        <div class="container mx-auto text-center">
-            <h1 class="hero-text text-4xl md:text-6xl font-bold mb-6 animate-pulse-slow">
+        <div class="container mx-auto text-center max-w-6xl">
+            <h1 class="hero-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-pulse-slow px-2">
                 The Future of <span class="text-primary">Multi-Chain</span> Wallets
             </h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+            <p class="text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl mx-auto px-4">
                 Manage all your crypto assets across multiple blockchains with security, speed, and ease.
             </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
-                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center" onclick="openWallet()">
-                    <i class="fas fa-coins text-2xl mb-2"></i>
-                    <span>ADD/CLAIM TOKEN</span>
+            <!-- Mobile-optimized button grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 max-w-5xl mx-auto px-2">
+                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 sm:py-4 px-3 sm:px-4 rounded-lg flex flex-col items-center justify-center min-h-[80px] sm:min-h-[100px]" onclick="openWallet()">
+                    <i class="fas fa-coins text-lg sm:text-2xl mb-1 sm:mb-2"></i>
+                    <span class="text-xs sm:text-sm text-center leading-tight">ADD/CLAIM TOKEN</span>
                 </button>
                 
-                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center" onclick="openWallet()">
-                    <i class="fas fa-exchange-alt text-2xl mb-2"></i>
-                    <span>SWAP/EXCHANGE</span>
+                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 sm:py-4 px-3 sm:px-4 rounded-lg flex flex-col items-center justify-center min-h-[80px] sm:min-h-[100px]" onclick="openWallet()">
+                    <i class="fas fa-exchange-alt text-lg sm:text-2xl mb-1 sm:mb-2"></i>
+                    <span class="text-xs sm:text-sm text-center leading-tight">SWAP/EXCHANGE</span>
                 </button>
                 
-                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center" onclick="openWallet()">
-                    <i class="fas fa-shopping-cart text-2xl mb-2"></i>
-                    <span>BUY</span>
+                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 sm:py-4 px-3 sm:px-4 rounded-lg flex flex-col items-center justify-center min-h-[80px] sm:min-h-[100px]" onclick="openWallet()">
+                    <i class="fas fa-shopping-cart text-lg sm:text-2xl mb-1 sm:mb-2"></i>
+                    <span class="text-xs sm:text-sm text-center leading-tight">BUY</span>
                 </button>
                 
-                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center" onclick="openWallet()">
-                    <i class="fas fa-tachometer-alt text-2xl mb-2"></i>
-                    <span>RESOLVE HIGH FEES</span>
+                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 sm:py-4 px-3 sm:px-4 rounded-lg flex flex-col items-center justify-center min-h-[80px] sm:min-h-[100px]" onclick="openWallet()">
+                    <i class="fas fa-tachometer-alt text-lg sm:text-2xl mb-1 sm:mb-2"></i>
+                    <span class="text-xs sm:text-sm text-center leading-tight">RESOLVE HIGH FEES</span>
                 </button>
                 
-                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-lg flex flex-col items-center justify-center" onclick="openWallet()">
-                    <i class="fas fa-search-dollar text-2xl mb-2"></i>
-                    <span>RECOVER MISSING FUNDS</span>
+                <button class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 sm:py-4 px-3 sm:px-4 rounded-lg flex flex-col items-center justify-center min-h-[80px] sm:min-h-[100px] sm:col-span-2 lg:col-span-1" onclick="openWallet()">
+                    <i class="fas fa-search-dollar text-lg sm:text-2xl mb-1 sm:mb-2"></i>
+                    <span class="text-xs sm:text-sm text-center leading-tight">RECOVER MISSING FUNDS</span>
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Why This Multi-Chain Section -->
-    <section id="security" class="py-16 px-4 overlay">
-        <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Why Choose Our Multi-Chain Wallet?</h2>
-            <p class="text-xl text-center mb-12 max-w-3xl mx-auto">We provide enterprise-grade security features to keep your digital assets safe</p>
+    <!-- Security Features Section -->
+    <section id="security" class="py-12 sm:py-16 px-4 overlay">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 px-2">Why Choose Our Multi-Chain Wallet?</h2>
+            <p class="text-lg sm:text-xl text-center mb-8 sm:mb-12 max-w-3xl mx-auto px-4">We provide enterprise-grade security features to keep your digital assets safe</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="feature-card card bg-dark/80 p-6 rounded-xl border border-gray-700">
-                    <div class="feature-icon w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl text-white mb-4 mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                <div class="feature-card card bg-dark/80 p-4 sm:p-6 rounded-xl border border-gray-700">
+                    <div class="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full flex items-center justify-center text-xl sm:text-2xl text-white mb-3 sm:mb-4 mx-auto">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-center">Military-Grade Encryption</h3>
-                    <p class="text-light/80 text-center">Your private keys are encrypted with AES-256 encryption, ensuring maximum security for your assets.</p>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-center">Military-Grade Encryption</h3>
+                    <p class="text-light/80 text-center text-sm sm:text-base">Your private keys are encrypted with AES-256 encryption, ensuring maximum security for your assets.</p>
                 </div>
                 
-                <div class="feature-card card bg-dark/80 p-6 rounded-xl border border-gray-700">
-                    <div class="feature-icon w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl text-white mb-4 mx-auto">
+                <div class="feature-card card bg-dark/80 p-4 sm:p-6 rounded-xl border border-gray-700">
+                    <div class="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full flex items-center justify-center text-xl sm:text-2xl text-white mb-3 sm:mb-4 mx-auto">
                         <i class="fas fa-user-lock"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-center">Non-Custodial Solution</h3>
-                    <p class="text-light/80 text-center">You own your keys, you own your crypto. We never have access to your funds or personal data.</p>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-center">Non-Custodial Solution</h3>
+                    <p class="text-light/80 text-center text-sm sm:text-base">You own your keys, you own your crypto. We never have access to your funds or personal data.</p>
                 </div>
                 
-                <div class="feature-card card bg-dark/80 p-6 rounded-xl border border-gray-700">
-                    <div class="feature-icon w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl text-white mb-4 mx-auto">
+                <div class="feature-card card bg-dark/80 p-4 sm:p-6 rounded-xl border border-gray-700">
+                    <div class="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full flex items-center justify-center text-xl sm:text-2xl text-white mb-3 sm:mb-4 mx-auto">
                         <i class="fas fa-bug"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-center">Penetration Testing</h3>
-                    <p class="text-light/80 text-center">Regular security audits and penetration testing by leading cybersecurity firms ensure your wallet's integrity.</p>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-center">Penetration Testing</h3>
+                    <p class="text-light/80 text-center text-sm sm:text-base">Regular security audits and penetration testing by leading cybersecurity firms ensure your wallet's integrity.</p>
                 </div>
                 
-                <div class="feature-card card bg-dark/80 p-6 rounded-xl border border-gray-700">
-                    <div class="feature-icon w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl text-white mb-4 mx-auto">
+                <div class="feature-card card bg-dark/80 p-4 sm:p-6 rounded-xl border border-gray-700">
+                    <div class="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full flex items-center justify-center text-xl sm:text-2xl text-white mb-3 sm:mb-4 mx-auto">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-center">Biometric Authentication</h3>
-                    <p class="text-light/80 text-center">Secure your wallet with fingerprint or facial recognition technology for quick and secure access.</p>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-center">Biometric Authentication</h3>
+                    <p class="text-light/80 text-center text-sm sm:text-base">Secure your wallet with fingerprint or facial recognition technology for quick and secure access.</p>
                 </div>
                 
-                <div class="feature-card card bg-dark/80 p-6 rounded-xl border border-gray-700">
-                    <div class="feature-icon w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl text-white mb-4 mx-auto">
+                <div class="feature-card card bg-dark/80 p-4 sm:p-6 rounded-xl border border-gray-700">
+                    <div class="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full flex items-center justify-center text-xl sm:text-2xl text-white mb-3 sm:mb-4 mx-auto">
                         <i class="fas fa-list-check"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-center">Multi-Signature Support</h3>
-                    <p class="text-light/80 text-center">Set up multi-signature wallets for added security, requiring multiple approvals for transactions.</p>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-center">Multi-Signature Support</h3>
+                    <p class="text-light/80 text-center text-sm sm:text-base">Set up multi-signature wallets for added security, requiring multiple approvals for transactions.</p>
                 </div>
                 
-                <div class="feature-card card bg-dark/80 p-6 rounded-xl border border-gray-700">
-                    <div class="feature-icon w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl text-white mb-4 mx-auto">
+                <div class="feature-card card bg-dark/80 p-4 sm:p-6 rounded-xl border border-gray-700">
+                    <div class="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full flex items-center justify-center text-xl sm:text-2xl text-white mb-3 sm:mb-4 mx-auto">
                         <i class="fas fa-hourglass-half"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-center">Transaction Simulation</h3>
-                    <p class="text-light/80 text-center">Preview transaction outcomes before signing to avoid malicious contracts and potential scams.</p>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-center">Transaction Simulation</h3>
+                    <p class="text-light/80 text-center text-sm sm:text-base">Preview transaction outcomes before signing to avoid malicious contracts and potential scams.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Cross-Chain Ecosystem -->
-    <section id="ecosystem" class="py-16 px-4 overlay">
-        <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Cross-Chain Ecosystem</h2>
-            <p class="text-xl text-center mb-12 max-w-3xl mx-auto">Seamlessly interact with multiple blockchain networks</p>
+    <section id="ecosystem" class="py-12 sm:py-16 px-4 overlay">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 px-2">Cross-Chain Ecosystem</h2>
+            <p class="text-lg sm:text-xl text-center mb-8 sm:mb-12 max-w-3xl mx-auto px-4">Seamlessly interact with multiple blockchain networks</p>
             
-            <div class="relative max-w-5xl mx-auto">
-                <div class="absolute inset-0 flex items-center justify-center">
+            <div class="chain-ecosystem relative max-w-5xl mx-auto">
+                <!-- Animated background circle - hidden on mobile for performance -->
+                <div class="absolute inset-0 hidden sm:flex items-center justify-center">
                     <div class="w-72 h-72 bg-primary/20 rounded-full animate-ping"></div>
                 </div>
                 
-                <div class="relative flex flex-wrap justify-center gap-8 md:gap-16">
-                    <div class="chain-card w-32 h-32 bg-dark/80 rounded-2xl border-2 border-[#f0b90b] flex items-center justify-center flex-col p-4">
-                        <i class="fab fa-bitcoin text-4xl text-[#f0b90b] mb-2"></i>
-                        <span class="font-semibold">Binance Chain</span>
+                <div class="relative grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-4 sm:gap-8 md:gap-16">
+                    <div class="chain-card w-24 h-24 sm:w-32 sm:h-32 bg-dark/80 rounded-2xl border-2 border-[#f0b90b] flex items-center justify-center flex-col p-2 sm:p-4 mx-auto">
+                        <i class="fab fa-bitcoin text-2xl sm:text-4xl text-[#f0b90b] mb-1 sm:mb-2"></i>
+                        <span class="font-semibold text-xs sm:text-sm text-center">Binance Chain</span>
                     </div>
                     
-                    <div class="chain-card w-32 h-32 bg-dark/80 rounded-2xl border-2 border-[#627eea] flex items-center justify-center flex-col p-4">
-                        <i class="fab fa-ethereum text-4xl text-[#627eea] mb-2"></i>
-                        <span class="font-semibold">Ethereum</span>
+                    <div class="chain-card w-24 h-24 sm:w-32 sm:h-32 bg-dark/80 rounded-2xl border-2 border-[#627eea] flex items-center justify-center flex-col p-2 sm:p-4 mx-auto">
+                        <i class="fab fa-ethereum text-2xl sm:text-4xl text-[#627eea] mb-1 sm:mb-2"></i>
+                        <span class="font-semibold text-xs sm:text-sm text-center">Ethereum</span>
                     </div>
                     
-                    <div class="chain-card w-32 h-32 bg-dark/80 rounded-2xl border-2 border-[#5e17eb] flex items-center justify-center flex-col p-4">
-                        <i class="fas fa-rocket text-4xl text-[#5e17eb] mb-2"></i>
-                        <span class="font-semibold">Polygon</span>
+                    <div class="chain-card w-24 h-24 sm:w-32 sm:h-32 bg-dark/80 rounded-2xl border-2 border-[#5e17eb] flex items-center justify-center flex-col p-2 sm:p-4 mx-auto">
+                        <i class="fas fa-rocket text-2xl sm:text-4xl text-[#5e17eb] mb-1 sm:mb-2"></i>
+                        <span class="font-semibold text-xs sm:text-sm text-center">Polygon</span>
                     </div>
                     
-                    <div class="chain-card w-32 h-32 bg-dark/80 rounded-2xl border-2 border-[#bf5af2] flex items-center justify-center flex-col p-4">
-                        <i class="fas fa-gem text-4xl text-[#bf5af2] mb-2"></i>
-                        <span class="font-semibold">Solana</span>
+                    <div class="chain-card w-24 h-24 sm:w-32 sm:h-32 bg-dark/80 rounded-2xl border-2 border-[#bf5af2] flex items-center justify-center flex-col p-2 sm:p-4 mx-auto">
+                        <i class="fas fa-gem text-2xl sm:text-4xl text-[#bf5af2] mb-1 sm:mb-2"></i>
+                        <span class="font-semibold text-xs sm:text-sm text-center">Solana</span>
                     </div>
                 </div>
                 
-                <div class="mt-16 text-center">
-                    <p class="text-xl max-w-3xl mx-auto">
+                <div class="mt-8 sm:mt-16 text-center px-4">
+                    <p class="text-lg sm:text-xl max-w-3xl mx-auto">
                         Our cross-chain technology allows you to seamlessly transfer assets between different blockchain networks without the need for multiple wallets or complicated processes.
                     </p>
                 </div>
@@ -280,18 +296,18 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark/95 py-12 px-4">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer class="bg-dark/95 py-8 sm:py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <i class="fas fa-link text-primary text-2xl mr-2"></i>
-                        <span class="text-xl font-bold text-light">Dapp Explorer</span>
+                        <i class="fas fa-link text-primary text-xl sm:text-2xl mr-2"></i>
+                        <span class="text-lg sm:text-xl font-bold text-light">Dapp Explorer</span>
                     </div>
-                    <p class="text-light/70">
+                    <p class="text-light/70 text-sm sm:text-base mb-4">
                         The most secure and user-friendly multi-chain wallet for managing all your cryptocurrency assets.
                     </p>
-                    <div class="flex space-x-4 mt-4">
+                    <div class="flex space-x-4">
                         <a href="#" class="text-light/70 hover:text-primary transition-colors">
                             <i class="fab fa-twitter"></i>
                         </a>
@@ -310,39 +326,39 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Products</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors">Web Wallet</a></li>
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors">Mobile App</a></li>
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors">Browser Extension</a></li>
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors">Hardware Wallet</a></li>
+                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">Web Wallet</a></li>
+                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">Mobile App</a></li>
+                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">Browser Extension</a></li>
+                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">Hardware Wallet</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Resources</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors">Help Center</a></li>
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors">Documentation</a></li>
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors">API</a></li>
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors">Status</a></li>
+                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">Help Center</a></li>
+                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">Documentation</a></li>
+                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">API</a></li>
+                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">Status</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
-                    <p class="text-light/70 mb-4">Subscribe to our newsletter for the latest updates</p>
+                    <p class="text-light/70 mb-4 text-sm sm:text-base">Subscribe to our newsletter for the latest updates</p>
                     <form class="flex flex-col space-y-2">
-                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
-                        <button type="submit" class="bg-primary hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">Subscribe</button>
+                        <input type="email" placeholder="Your email" class="px-3 sm:px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary text-sm sm:text-base">
+                        <button type="submit" class="bg-primary hover:bg-blue-600 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition-colors text-sm sm:text-base">Subscribe</button>
                     </form>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-light/70">© 2025 Dapp Explorer. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-light/70 hover:text-primary transition-colors">Terms</a>
-                    <a href="#" class="text-light/70 hover:text-primary transition-colors">Privacy</a>
-                    <a href="#" class="text-light/70 hover:text-primary transition-colors">Cookies</a>
+            <div class="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <p class="text-light/70 text-sm sm:text-base text-center sm:text-left">© 2025 Dapp Explorer. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">Terms</a>
+                    <a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">Privacy</a>
+                    <a href="#" class="text-light/70 hover:text-primary transition-colors text-sm sm:text-base">Cookies</a>
                 </div>
             </div>
         </div>
